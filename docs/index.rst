@@ -14,9 +14,9 @@ The *fledge-south-systeminfo* plugin implements a that collects data about the m
 
 A typical output for one of these assets, in this case the processes asset is shown below
 
-+-----------------+
-| |system_info_3| |
-+-----------------+
++----------------+
+| |systeminfo_3| |
++----------------+
 
 To create a south service with the systeminfo plugin
 
