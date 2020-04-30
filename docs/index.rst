@@ -10,7 +10,21 @@ System Information
 .. image:: images/systeminfo_2.jpg
    :align: right
 
-The *fledge-south-systeminfo* plugin implements a that collects data about the machine that the Fledge instance is running on. The plugin will create a number of assets, in general these are asset per device connected in the case of disks and network interfaces. There are also some generic assets for the CPU usage, processes etc.
+The *fledge-south-systeminfo* plugin implements a that collects data about the machine that the Fledge instance is running on. The plugin will create a number of assets, in general there are one or more assets per device connected in the case of disks and network interfaces. There are also some generic assets to measure;
+
+  - CPU Usage
+
+  - Host name
+
+  - Load Average
+
+  - Memory Usage
+
+  - Paging and swapping
+
+  - Process information
+
+  - System Uptime
 
 A typical output for one of these assets, in this case the processes asset is shown below
 
