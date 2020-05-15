@@ -7,7 +7,6 @@
 """ Module for System Info async plugin """
 
 import copy
-import uuid
 import subprocess
 
 from fledge.common import logger
@@ -46,7 +45,7 @@ def plugin_info():
 
     return {
         'name': 'System Info plugin',
-        'version': '1.7.0',
+        'version': '1.8.0',
         'mode': 'poll',
         'type': 'south',
         'interface': '1.0',
@@ -209,7 +208,6 @@ def plugin_poll(handle):
         data = {
             'asset': "{}{}".format(handle['assetNamePrefix']['value'], asset),
             'timestamp': time_stamp,
-            'key': str(uuid.uuid4()),
             'readings': data
         }
         readings.append(data)
