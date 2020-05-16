@@ -28,7 +28,7 @@ def test_plugin_contract():
 def test_plugin_info():
     assert systeminfo.plugin_info() == {
         'name': 'System Info plugin',
-        'version': '1.5.0',
+        'version': '1.8.0',
         'mode': 'poll',
         'type': 'south',
         'interface': '1.0',
