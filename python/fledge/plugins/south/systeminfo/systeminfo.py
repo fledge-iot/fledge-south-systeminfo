@@ -45,7 +45,7 @@ def plugin_info():
 
     return {
         'name': 'System Info plugin',
-        'version': '2.0.0',
+        'version': '2.0.1',
         'mode': 'poll',
         'type': 'south',
         'interface': '1.0',
