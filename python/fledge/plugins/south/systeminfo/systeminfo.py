@@ -45,7 +45,7 @@ def plugin_info():
 
     return {
         'name': 'System Info plugin',
-        'version': '3.0.0',
+        'version': '3.1.0',
         'mode': 'poll',
         'type': 'south',
         'interface': '1.0',
@@ -185,11 +185,26 @@ def plugin_poll(handle):
         # Paging and Swapping
         c6 = get_subprocess_result(cmd='vmstat -s')
         paging_swapping = {}
+        keywords = {
+            "paged in": "paged_in",
+            "paged out": "paged_out",
+            "swapped in": "swapped_in",
+            "swapped out": "swapped_out"
+        }
         for line in c6:
-            if 'page' in line:
-                a_line = line.strip().split("pages")
-                paging_swapping.update({a_line[1].replace(' ', ''): int(a_line[0].strip())})
-        insert_reading("pagingAndSwappingEvents", time_stamp, paging_swapping)
+            line = line.strip()
+            for kw, key in keywords.items():
+                if kw in line:
+                    try:
+                        value_str = line.split(kw)[0].strip()
+                        value = int(value_str.split()[0])  # Ensures leading units like "K" are stripped
+                        paging_swapping[key] = value
+                    except (IndexError, ValueError):
+                        continue  # Skip malformed lines gracefully
+
+        if paging_swapping:
+            insert_reading("pagingAndSwappingEvents", time_stamp, paging_swapping)
+
 
         # Disk Traffic
         c4 = get_subprocess_result(cmd='iostat -xd 2 1')
